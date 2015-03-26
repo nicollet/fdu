@@ -27,7 +27,7 @@ def fdu(args, silent=False):
     for file_ in args.files:
         for f in glob.glob(file_):
             size = 0
-            if os.path.isdir(f) and not os.path.ismount(f):
+            if os.path.isdir(f) and not os.path.ismount(f) and not os.path.islink(f):
                 if args.update:
                     size = write(f, args)
                 else:
